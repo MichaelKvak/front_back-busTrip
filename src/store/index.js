@@ -83,7 +83,7 @@ export default new Vuex.Store({
       commit("setError", null);
 
       axios
-        .delete("http://localhost:3000/buses", {
+        .delete(apiEndPoints.buses.deleteList, {
           busId,
         })
         .then((res) => res.data)
@@ -102,7 +102,7 @@ export default new Vuex.Store({
       commit("setError", null);
       return new Promise((resolve, reject) => {
         axios
-          .get(`http://localhost:3000/buses/${busId}`)
+          .get(apiEndPoints.buses.getBusById(busId))
           .then((res) => res.data)
           .then((resData) => {
             if (resData.success) {
@@ -126,7 +126,7 @@ export default new Vuex.Store({
       commit("setError", null);
       return new Promise((resolve, reject) => {
         axios
-          .put("http://localhost:3000/buses/update", {
+          .put(apiEndPoints.buses.updateList, {
             busId: state.editedObj._id,
             busDestination,
             busDepart,

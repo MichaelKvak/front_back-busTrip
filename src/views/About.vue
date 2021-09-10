@@ -89,10 +89,10 @@ export default {
     if (this.isEditing) {
       try {
         const editedObj = await this.getBusById(this.$route.params.id);
-        this.busDestination = editedObj.Destination;
-        this.busDepart = editedObj.Depart;
-        this.busDuration = editedObj.Duration;
-        this.busPrice = editedObj.Price;
+        this.busDestination = editedObj.destination;
+        this.busDepart = editedObj.depart;
+        this.busDuration = editedObj.duration;
+        this.busPrice = editedObj.price;
       } catch {
         this.errorMessage = "edited error";
       }
