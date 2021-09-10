@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-
+import apiEndPoints from "../constants/apiEndPoints.js";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -39,7 +39,7 @@ export default new Vuex.Store({
       commit("setLoading", true);
       commit("setError", null);
       axios
-        .get("http://localhost:3000/buses")
+        .get(apiEndPoints.buses.readList)
         .then((res) => res.data)
         .then((resData) => {
           if (resData.success) commit("setBusList", resData.data);
@@ -59,7 +59,7 @@ export default new Vuex.Store({
       commit("setError", null);
       return new Promise((resolve, reject) => {
         axios
-          .post("http://localhost:3000/buses/add", {
+          .post(apiEndPoints.buses.createList, {
             busDestination,
             busDepart,
             busDuration,
